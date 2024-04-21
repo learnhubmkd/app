@@ -13,39 +13,21 @@ const Navigation = () => {
         <Link className={`display-s ${styles.navigationLogo}`} href="/">
           <Image src="/logo/logo.svg" alt="LearnHub Logo" width={250} height={55} />
         </Link>
-        <div id="navbarNav">
-          <ul className={styles.menuElementsNav}>
-            <Link className={`headline-s ${styles.menuElements}`} href="/">
-              Визија{' '}
-            </Link>
-            <Link className={`headline-s ${styles.menuElements}`} href="/">
-              {' '}
-              Цели{' '}
-            </Link>
-            <Link className={`headline-s ${styles.menuElements}`} href="/">
-              {' '}
-              Контакт{' '}
-            </Link>
-            <Link className={`headline-s ${styles.menuElements}`} href="/blog">
-              Блог{' '}
-            </Link>
-          </ul>
-        </div>
         <div className={styles.buttonsContent}>
           <div>
             <Link href="/signup" passHref>
               <Button
                 style={{
-                  backgroundColor: 'var(--bg-color)',
+                  backgroundColor: '#f9664b',
                   padding: '10px',
+                  fontSize: '17px',
                   marginRight: '10px',
-                  color: '#ea713e',
-                  border: '1px solid #ea713e',
-                  fontSize: '20px',
                   paddingInline: '25px',
+                  height: '48px',
+                  width: '180px',
                 }}
               >
-                Sign Up
+                Регистрирај се
               </Button>
             </Link>
           </div>
@@ -53,13 +35,17 @@ const Navigation = () => {
             <Link href="/signin" passHref>
               <Button
                 style={{
-                  backgroundColor: '#f9664b',
+                  backgroundColor: 'var(--bg-color)',
                   padding: '10px',
-                  fontSize: '20px',
+                  height: '48px',
+                  width: '131px',
+                  color: '#FFFF',
+                  border: '1px solid #ea713e',
+                  fontSize: '17px',
                   paddingInline: '25px',
                 }}
               >
-                Sign In
+                Најави се
               </Button>
             </Link>
           </div>

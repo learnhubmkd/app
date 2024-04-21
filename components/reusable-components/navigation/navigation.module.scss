@@ -25,40 +25,31 @@
 .navigationLogo {
   margin-left: 50px;
   color: var(--text-color);
-  width: 6.3em;
-  height: 1.22em;
-  top: 1.56em;
-  left: 2.36em;
-}
-
-.menuElements {
-  align-items: center;
-  display: flex;
-  color: var(--text-color);
-}
-
-.menuElementsNav {
-  margin-right: 70px;
-  display: flex;
-  list-style: none;
-  padding: 0px;
+  width: 208px;
+  height: 48px;
+  top: 30px;
+  left: 50px;
 }
 
 .navContainer {
+  margin-left: 40px;
   display: flex;
   justify-content: space-between;
+  height: 48px;
+  width: 1760px;
 }
 
 .buttonsContent {
-  margin-right: 50px;
+ margin-right: 40px;
   display: flex;
   align-items: center;
 }
 
 .largeNavbar {
   background-color: var(--bg-color);
-  padding: 40px;
+  padding: 20px;
   padding-inline: 0;
+  height: 88px;
 }
 
 @include respond-to('small') {
