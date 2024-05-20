@@ -1,20 +1,22 @@
 'use client';
 
 import { useFormik } from 'formik';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import * as Yup from 'yup';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { ContactFormData, submitContactForm } from './SubmitContactForm';
 import Button from '../../reusable-components/button/Button';
 import TextInput from '../../reusable-components/text-input/TextInput';
 import TextArea from '../../reusable-components/text-area/TextArea';
-import { fullNameRegexValidation, emailRegexValidation } from './regexValidation';
+import { emailRegexValidation, fullNameRegexValidation } from './regexValidation';
 import CaptchaWidget from '../../reusable-components/turnstile-captcha/CaptchaWidget';
+import { useTurnstile } from '../../reusable-components/turnstile-captcha/CaptchaLoader';
 
 const ContactForm = () => {
+  const turnstile = useTurnstile('contact');
   const formik = useFormik({
-    initialValues: { username: '', email: '', message: '', cfTurnstileResponse: '' },
+    initialValues: { username: '', email: '', message: '' },
+    enableReinitialize: true,
     validationSchema: Yup.object({
       username: Yup.string()
         .matches(fullNameRegexValidation, '*Невалидно име')
@@ -26,16 +28,14 @@ const ContactForm = () => {
       message: Yup.string()
         .matches(/^.{20,}$/, '*Минимум број на каратктери 20!')
         .required('*Пораката е задолжителна'),
-      cfTurnstileResponse: Yup.string(),
     }),
     onSubmit: async (values, { resetForm }) => {
-      console.log(values);
       try {
         const formData: ContactFormData = {
           name: values.username,
           email: values.email,
           message: values.message,
-          cfTurnstileResponse: values.cfTurnstileResponse,
+          turnstile,
         };
 
         const response = await submitContactForm(formData);
@@ -50,7 +50,7 @@ const ContactForm = () => {
       }
     },
   });
-  console.log(formik);
+
   return (
     <div>
       <ToastContainer />

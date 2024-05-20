@@ -23,12 +23,14 @@ const CaptchaLoader: React.FC<CaptchaLoaderProps> = ({
 }) => {
   useEffect(() => {
     const renderWidget = (widget: Element | null) => {
-      window.turnstile.render(`#${widget?.id}`, {
+      const widgetId = widget?.id;
+      window.turnstile.render(`#${widgetId}`, {
         sitekey: siteKey,
         'error-callback': onError,
         'expired-callback': onExpired,
         theme,
         language,
+        'response-field-name': 'turnstile',
         tabindex: tabIndex,
         cData,
         callback: () => {
@@ -50,7 +52,6 @@ const CaptchaLoader: React.FC<CaptchaLoaderProps> = ({
       script.id = scriptId;
       script.onload = renderWidgets;
       document.body.appendChild(script);
-      return script.id;
     };
     const loadedScript = document.getElementById(scriptId);
     if (loadedScript === null) {
@@ -61,3 +62,10 @@ const CaptchaLoader: React.FC<CaptchaLoaderProps> = ({
 };
 
 export default CaptchaLoader;
+
+export const useTurnstile = (id: string) => {
+  const turnstileInput = document.querySelector(
+    `#turnstile-captcha-${id} > input`
+  ) as HTMLInputElement;
+  return turnstileInput?.value;
+};
