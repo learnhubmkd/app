@@ -10,14 +10,11 @@ import Button from '../../reusable-components/button/Button';
 import TextInput from '../../reusable-components/text-input/TextInput';
 import TextArea from '../../reusable-components/text-area/TextArea';
 import { fullNameRegexValidation, emailRegexValidation } from './regexValidation';
+import CaptchaWidget from '../../reusable-components/turnstile-captcha/CaptchaWidget';
 
-interface ContactFormProps {
-  cfTurnstileResponse: string;
-}
-
-const ContactForm = ({ cfTurnstileResponse }: ContactFormProps) => {
+const ContactForm = () => {
   const formik = useFormik({
-    initialValues: { username: '', email: '', message: '' },
+    initialValues: { username: '', email: '', message: '', cfTurnstileResponse: '' },
     validationSchema: Yup.object({
       username: Yup.string()
         .matches(fullNameRegexValidation, '*Невалидно име')
@@ -29,14 +26,16 @@ const ContactForm = ({ cfTurnstileResponse }: ContactFormProps) => {
       message: Yup.string()
         .matches(/^.{20,}$/, '*Минимум број на каратктери 20!')
         .required('*Пораката е задолжителна'),
+      cfTurnstileResponse: Yup.string(),
     }),
     onSubmit: async (values, { resetForm }) => {
+      console.log(values);
       try {
         const formData: ContactFormData = {
           name: values.username,
           email: values.email,
           message: values.message,
-          cfTurnstileResponse,
+          cfTurnstileResponse: values.cfTurnstileResponse,
         };
 
         const response = await submitContactForm(formData);
@@ -51,7 +50,7 @@ const ContactForm = ({ cfTurnstileResponse }: ContactFormProps) => {
       }
     },
   });
-
+  console.log(formik);
   return (
     <div>
       <ToastContainer />
@@ -82,7 +81,7 @@ const ContactForm = ({ cfTurnstileResponse }: ContactFormProps) => {
           formik={formik}
           isRequired
         />
-
+        <CaptchaWidget name="contact" />
         <Button href="" type="submit" buttonClass={['primaryButton']} buttonText="Испрати" />
       </form>
     </div>

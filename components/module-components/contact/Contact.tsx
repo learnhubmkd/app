@@ -29,7 +29,7 @@ const Contact = () => {
               about your project and provide help
             </p>
           </div>
-          <ContactForm cfTurnstileResponse="cfTurnstilerResponse" />
+          <ContactForm />
         </div>
         <div className={style.contactRightContainer}>
           <h2>Стани член на Discord</h2>

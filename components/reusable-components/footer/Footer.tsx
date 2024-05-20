@@ -13,6 +13,7 @@ import styles from './footer.module.scss';
 import TextInput from '../text-input/TextInput';
 import logodark from '../../../public/logo/logo-black.svg';
 import SocialMediaLinks from './SocialMediaIcons';
+import CaptchaWidget from '../turnstile-captcha/CaptchaWidget';
 
 const Footer: React.FC = () => {
   const { theme } = useTheme();
@@ -62,6 +63,7 @@ const Footer: React.FC = () => {
         className={`${styles.footer} ${theme === 'light' ? styles.lightBackground : styles.darkBackground}`}
       >
         <form onSubmit={formik.handleSubmit}>
+          <CaptchaWidget name="newsletter" />
           <div className={`display-s ${styles.footerLogo}`}>
             <Image src={logodark} alt="LearnHub Logo" width={208} height={48} />
           </div>
