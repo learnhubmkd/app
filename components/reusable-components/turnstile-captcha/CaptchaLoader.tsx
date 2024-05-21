@@ -64,6 +64,9 @@ const CaptchaLoader: React.FC<CaptchaLoaderProps> = ({
 export default CaptchaLoader;
 
 export const useTurnstile = (id: string) => {
+  if (id === undefined) {
+    throw Error('id must be provided');
+  }
   const turnstileInput = document.querySelector(
     `#turnstile-captcha-${id} > input`
   ) as HTMLInputElement;
