@@ -21,10 +21,12 @@
   gap: 5.125rem;
 
   @include u.breakpoint-down(medium) {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
   @include u.breakpoint-down(small) {
     flex-direction: column;
+    gap: 2rem;
   }
 }
 
