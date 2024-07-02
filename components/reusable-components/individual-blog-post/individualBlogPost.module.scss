@@ -1,0 +1,117 @@
+.backgroundWrapper {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blogImg {
+  width: 80vw;
+  max-height: 34.5rem;
+  object-fit: cover;
+  margin-top: clamp(6rem, 10vw, 8.75rem);
+}
+
+.layoutContainer {
+  margin-top: clamp(2rem, 5vw, 3.125rem);
+  display: flex;
+  width: 80vw;
+  justify-content: space-between;
+
+  .customSocialMediaIcons {
+    display: flex;
+    gap: 1rem;
+
+    :first-child {
+      border: 1px solid black;
+      border-radius: 50%;
+      fill: gray;
+    }
+  }
+
+  .headingWrapper {
+    display: flex;
+    flex-direction: column;
+    color: #121d36;
+
+    .postInfo {
+      display: flex;
+      flex-direction: row;
+      margin: clamp(1rem, 3vw, 1.5rem) 0 clamp(1.5rem, 5vw, 2.3125rem) 0;
+      font-weight: 500;
+      font-size: 1.75rem;
+      color: #475569;
+
+      p {
+        padding: 0 clamp(0.5rem, 2vw, 0.625rem) 0 0;
+      }
+    }
+
+    .paragraphWrapper {
+      width: 50rem;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 5vw, 3.125rem);
+      color: #475569;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      margin-bottom: clamp(4rem, 8vw, 5rem);
+    }
+  }
+
+  .sideBar {
+    max-width: 25.0625rem;
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      max-width: 25rem;
+      margin: clamp(1rem, 2vw, 1rem) 0 clamp(2rem, 4vw, 2rem) 0;
+
+      .tag {
+        width: 4.5rem;
+        height: 2rem;
+        border-radius: 1.25rem;
+        border: 0.0625rem solid #94a3b8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f8fafc;
+        color: #475569;
+      }
+    }
+
+    hr {
+      margin: clamp(0.5rem, 2vw, 0.9375rem) 0 0 0;
+      color: #475569;
+    }
+
+    .buttonWrapper {
+      display: flex;
+      justify-content: flex-end;
+      text-decoration: underline;
+      color: var(--main-button);
+    }
+  }
+}
+
+.cardSection {
+  margin-top: 5rem;
+  width: 80vw;
+
+  .cardsContainer {
+    margin-top: clamp(1rem, 3vw, 1.75rem);
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.buttonWrapper {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 2.5rem 0 8.75rem 0;
+}

@@ -1,0 +1,27 @@
+.popularPost {
+  padding: 1.875rem 1rem 2.25rem;
+
+  &:nth-child(2n) {
+    background-color: #f8fafc;
+  }
+
+  .popularInfo {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    color: #475569;
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .popularDesc {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.875rem;
+    color: #121d36;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
